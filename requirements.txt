@@ -1,0 +1,8 @@
+pip install tensorflow
+pip install Cython
+pip install tensorflow-gpu
+pip install pillow
+pip install lxml
+pip install matplotlib
+pip install jupyter
+brew install protobuf
