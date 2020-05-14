@@ -94,6 +94,11 @@ The training is performed by running the train.py file as follows
 python train.py --logtostderr --model_dir=training/ --pipeline_config_path=training/ ssd_mobilenet_v2_coco.config
 ```
 The evaluation has been kept as the test data to monitor the mAP and loss and the following plots are obtained
+### mAP:
+![](images/mAP.png)
+### Recall and loss:
+![](images/recandloss.png)
+
 The iterations ran was 7000 and then the model is saved in training 
 
 To avail the frozen model,rn the beow file which will be in object_detection folder
@@ -115,8 +120,12 @@ python main.py
 ```
 saves the mAP and other metrics as mentioned in “metrics.json” and other information in the “output.txt” in output directory.
 
+### Obtained results:
+![](images/test_results.png)
 
-
+### Images predicted
+The left of the both images are groudtruth and the right of the both images are the predicted
+![](images/image_results.png)
 
 
 
