@@ -23,7 +23,7 @@ install all given in requirements
   sudo apt-get install proto
   sudo apt install protobuf-compiler
   ```
-
+For other os follow the instructions in the link http://google.github.io/proto-lens/installing-protoc.html
 * pycoco tools for python:
 
   - step 1- Run command -> pip install --upgrade cython
