@@ -121,8 +121,10 @@ python main.py
 saves the mAP and other metrics as mentioned in “metrics.json” and other information in the “output.txt” in output directory.
 
 ### Obtained results:
+
 ![](images/test_results.png)
 
+![](images/PRcurve.png)
 ### Images predicted
 The left of the both images are groudtruth and the right of the both images are the predicted
 ![](images/image_results.png)
