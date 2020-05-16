@@ -1,6 +1,6 @@
-pip install tensorflow
+pip install tensorflow==1.14.0
 pip install Cython
-pip install tensorflow-gpu
+pip install tensorflow-gpu==1.14.0
 pip install pillow
 pip install lxml
 pip install matplotlib
