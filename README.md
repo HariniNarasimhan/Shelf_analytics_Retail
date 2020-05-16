@@ -109,6 +109,16 @@ To avail the frozen model,run the beow file which will be in object_detection fo
 ```
 python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ ssd_mobilenet_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-6969 --output_directory inference_graph
 ```
+
+### Hyper parameter tuning performed:
+1. Anchor box size -> the average height and width of bounding boxes from the dataset is 301 and 200 respectively and so the anchor box size is fixed as (256,256)
+2. Number of anchor boxes per spatial location -> As mentioned, only one anchor box per spatial location is used 
+  For which, as number of feature maps and the number of anchor boxes should match, the number of layers for feature extraction is selected as one.
+3. The scale and aspect ratio of anchor box -> scale=0.75 and aspect ratio=1.0 
+  selection of scale - It is set as the percentage difference between minimum width/height and maximum width/height of bounding boxes in the dataset varies between 59.5% and 68.9%.
+  aspect ratio - As most of the bounding boxes are nearly square
+4. Other hyper parameters -> batch_size=24 , steps=3000, initial_learning_rate=0.004, exponential_decay_factor=0.95.
+
 ***
 
 ## Testing:
@@ -135,9 +145,25 @@ saves the mAP and other metrics as mentioned in “metrics.json” and other inf
 ![](images/test_results.png)
 
 ![](images/PRcurve.png)
-### Images predicted
+### Sample Images predicted
 The left of the both images are groudtruth and the right of the both images are the predicted
 ![](images/image_results.png)
+
+You can find all the test prediction results in the test_results_images folder.
 ***
+## Questions to answer???
+### What is the purpose of using multiple anchors per feature map cell?
+If a particular application of object detection demands the detection of objects of drastically varying sizes, multiple anchor boxes per sptial location is required.
 
+For example: Consider the application of person detection via surveillance cameras, the person near to the camera results in bigger bounding box and the far away person in smaller boundig box with different aspect ratios. This is because, the number of anchor boxes per spatial location is decided based on scale variations and aspect ratio variations of bounding boxes based on the dataset/application.
 
+### Does this problem require multiple anchors? Please justify your answer. 
+As analysed with the given data, the shelf analytics is needed to predict products in the shelf with static cameras. As the variation of the size of the products stacked in the shelves is not drastically large, multiple anchors per spatial location is not a necessity. The variation in the width and height of the products in the given dataset is explained in the section "Hyper parameter tuning performed" (above). If the size of the bounding boxes to be predicted varies more than 100 or 200 percentage between them, the multiple anchor boxes might produce better accuracy.
+
+This is futher proved by an experiment performed on multiple anchor boxes of the same network as (scale=[0.2,0.95] and aspect_ratio=[1.0,2.0,0.5,0.75,3.0] ) hasachieved nearly same mAP after training the network for around 7000 steps (almost double the previous experiment). It is both computionally costly and time consuming.
+
+mAP during training:
+![](images/mAP_mult_anchor.png)
+
+Furthermore, the test result is comparitively poor with True positives (one anchor box TP-2198 ,multiple anchor boxes TP-2144)
+![](images/test_results_mult_anchor.png)
