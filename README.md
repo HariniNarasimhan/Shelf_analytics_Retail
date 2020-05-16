@@ -14,16 +14,17 @@ install all given in requirements
   Download /clone in the site-packages/tensorflow (to embed the api with existing tensorflow lib)
 2. SSD model – (http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v2_coco_2018_03_29.tar.gz)
   Download and save as per the structure given
-3. The given data – store as per the structure
+3. The given data – Refer "Structure of files"
 4.	Annotation of it’s bounding boxes – download only annotation.txt from the dataset link given
+5. All the requirements are tested and verified in OS-Ubuntu (I recommend the same)
 
-#### Issues:
+#### Issues to solve on installing requirements:
 * Protoc not available:
   ```
   sudo apt-get install proto
   sudo apt install protobuf-compiler
   ```
-
+For other os follow the instructions in the link http://google.github.io/proto-lens/installing-protoc.html
 * pycoco tools for python:
 
   - step 1- Run command -> pip install --upgrade cython
@@ -34,7 +35,7 @@ install all given in requirements
   - step 5- pip install pycocotools
 
 ***
-## Structure of the files:
+## Structure of files:
 ```
 Site-packages/tensorflow/models
 ├── images
@@ -104,16 +105,20 @@ The evaluation has been kept as the test data to monitor the mAP and loss and th
 
 The iterations ran was 7000 and then the model is saved in training 
 
-To avail the frozen model,rn the beow file which will be in object_detection folder
+To avail the frozen model,run the beow file which will be in object_detection folder
 ```
 python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ ssd_mobilenet_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-6969 --output_directory inference_graph
 ```
 ***
+
 ## Testing:
 To run only testing,
+- Step 1- Install tensorflow 1.14.0 version
+- Step-2- Clone the tensorflow models repo
+- Step-3- Save the "detect_objct_frozen_model.ipynb" and "inference_graph" folder in the object_detection folder.
+- Step-4- Run all the  cells in detect_objct_frozen_model.ipynb which saves a image2product.json file and then saves the groundtruth folder having the groundtruth annotations as needed and then detection-results having the predicted results
 
-Run all the  cells in detect_objct_frozen_model.ipynb which saves a image2product.json file and then saves the groundtruth folder having the groundtruth annotations as needed and then detection-results having the predicted results
-
+### To obtain mAP informtion
 Now, clone/download the below github to know the mAP results of test data
 https://github.com/Cartucho/mAP
 
