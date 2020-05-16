@@ -103,7 +103,7 @@ The evaluation has been kept as the test data to monitor the mAP and loss and th
 ### Recall and loss:
 ![](images/recandloss.png)
 
-The iterations ran was 7000 and then the model is saved in training 
+The iterations/steps ran was 4000 and then the model is saved in training 
 
 To avail the frozen model,run the beow file which will be in object_detection folder
 ```
