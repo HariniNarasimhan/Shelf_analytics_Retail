@@ -114,8 +114,8 @@ python export_inference_graph.py --input_type image_tensor --pipeline_config_pat
 ## Testing:
 To run only testing,
 - Step 1- Install tensorflow 1.14.0 version
-- Step-2- Clone the tensorflow models repo
-- Step-3- Save the "detect_objct_frozen_model.ipynb" and "inference_graph" folder in the object_detection folder.
+- Step-2- Clone the tensorflow models repo -(git clone https://github.com/tensorflow/models.git)
+- Step-3- Save the "detect_objct_frozen_model.ipynb", "inference_graph" and "training" folders to the object_detection folder (<path_to_your_tensorflow_installation>/models/research/object_detection).
 - Step-4- Run all the  cells in detect_objct_frozen_model.ipynb which saves a image2product.json file and then saves the groundtruth folder having the groundtruth annotations as needed and then detection-results having the predicted results
 
 ### To obtain mAP informtion
