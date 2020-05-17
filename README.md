@@ -124,9 +124,10 @@ python export_inference_graph.py --input_type image_tensor --pipeline_config_pat
 ## Testing:
 To run only testing,
 - Step 1- Install tensorflow 1.14.0 version
-- Step-2- Clone the tensorflow models repo -(git clone https://github.com/tensorflow/models.git)
-- Step-3- Save the "detect_objct_frozen_model.ipynb", "inference_graph" and "training" folders to the object_detection folder (<path_to_your_tensorflow_installation>/models/research/object_detection).
-- Step-4- Run all the  cells in detect_objct_frozen_model.ipynb which saves a image2product.json file and then saves the groundtruth folder having the groundtruth annotations as needed and then detection-results having the predicted results
+- Step-2- Clone the tensorflow models repo -(git clone https://github.com/tensorflow/models.git) Download/clone in the site-packages/tensorflow i.e., <path_to_your_tensorflow_installation> (to embed the api with existing tensorflow lib)
+- Step-3- Save the "detect_objct_frozen_model.ipynb", "inference_graph" and "training" folders to the object_detection folder (<path_to_your_tensorflow_installation>/(models or model-master)/research/object_detection).
+- Step-4- Run all the  cells in detect_objct_frozen_model.ipynb which saves a image2product.json file.
+  Alongwith, the groundtruth folder having the groundtruth annotations and then detection-results having the predicted results are fomatted into text files for each image. This is a preprocessing step to obtain mAP score on test results in further steps.
 
 ### To obtain mAP informtion
 Now, clone/download the below github to know the mAP results of test data
@@ -153,7 +154,7 @@ You can find all the test prediction results in the test_results_images folder.
 ***
 ## Questions to answer???
 ### What is the purpose of using multiple anchors per feature map cell?
-If a particular application of object detection demands the detection of objects of drastically varying sizes, multiple anchor boxes per sptial location is required.
+If a particular application of object detection demands the detection of objects of drastically varying sizes, multiple anchor boxes per spatial location is required.
 
 For example: Consider the application of person detection via surveillance cameras, the person near to the camera results in bigger bounding box and the far away person in smaller boundig box with different aspect ratios. This is because, the number of anchor boxes per spatial location is decided based on scale variations and aspect ratio variations of bounding boxes based on the dataset/application.
 
