@@ -1,5 +1,5 @@
 # Shelf_analytics_Retail
-Technical round submission to Infilect
+Towards creating inventory management for retail store
 ## Problem Statement:
   1.	To find the total number of products present on every shelf in a retail store
   2.	Each Shelf image has more than one product and so it is needed to output the total number of products in each shelf image.
@@ -168,3 +168,7 @@ mAP during training:
 
 Furthermore, the test result is comparitively poor with True positives (one anchor box TP-2198 ,multiple anchor boxes TP-2144)
 ![](images/test_results_mult_anchor.png)
+
+
+### Various super market results
+![](images/results.gif)
